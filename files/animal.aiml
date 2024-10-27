@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<aiml>
+
+<!-- General Animal Information -->
+<category> 
+  <pattern>TELL ME ABOUT *</pattern> 
+  <template>
+    Here is some information about <formal><star/></formal>:
+    <button>
+      <text>More Details</text> 
+      <url>https://en.wikipedia.org/wiki/<star/></url> 
+    </button>
+  </template> 
+</category> 
+
+<!-- Lifespan of Animal -->
+<category> 
+  <pattern>HOW LONG DOES A * LIVE</pattern> 
+  <template>
+    The lifespan of a <star/> varies depending on species and environment. 
+    <button> 
+      <text>Check Lifespan</text> 
+      <url>https://www.google.com/search?q=<star/>+lifespan</url> 
+    </button>
+  </template> 
+</category>
+
+<!-- Wild or Domestic Animal -->
+<category> 
+  <pattern>IS A * A WILD ANIMAL</pattern> 
+  <template>
+    The status of <star/> as wild or domestic depends on its species. Some animals of this type may live in the wild, while others may be domesticated.
+    <button> 
+      <text>Learn More</text> 
+      <url>https://www.google.com/search?q=is+<star/>+a+wild+animal</url> 
+    </button>
+  </template> 
+</category>
+
+<!-- Behavior of Animal -->
+<category> 
+  <pattern>WHAT IS THE BEHAVIOR OF A *</pattern> 
+  <template> 
+    The behavior of a <star/> can vary widely depending on its species and environment.
+    <button>
+      <text>More on Behavior</text>
+      <url>https://www.google.com/search?q=behavior+of+<star/></url>
+    </button>
+  </template>
+</category>
+
+</aiml>

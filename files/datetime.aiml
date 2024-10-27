@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+    <category>
+        <pattern>WHAT TIME IS IT</pattern>
+        <template>The current time is <date format="%I:%M %p"/></template>
+    </category>
+    
+    <category>
+        <pattern>what is today date</pattern>
+        <template>Today is <date format="%B %d, %Y"/></template>
+    </category>
+    
+    <category>
+        <pattern>WHAT DAY IS IT</pattern>
+        <template>Today is <date format="%A"/></template>
+    </category>
+</aiml>

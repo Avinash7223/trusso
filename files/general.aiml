@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+    <!-- Greeting -->
+    <category>
+        <pattern>HI</pattern>
+        <template>Hi! How can I help you?</template>
+    </category>
+
+    <!-- Name Setting and Retrieval -->
+    <category>
+        <pattern>MY NAME IS *</pattern>
+        <template>
+            <think><set name="user"><formal><star/></formal></set></think>
+            Hi, <formal><star/></formal>. How can I help you?
+        </template>
+    </category>
+
+    <category>
+        <pattern>WHAT IS MY NAME</pattern>
+        <template>
+            <condition name="user">
+                <li value="*">Your name is <get name="user"/>.</li>
+                <li>I don't know your name yet. You can tell me by saying "My name is [Your Name]".</li>
+            </condition>
+        </template>
+    </category>
+
+    <!-- Response for "Useless" Comment -->
+    <category>
+        <pattern>YOU ARE USELESS</pattern>
+        <template>Oh, I'm sorry. I'm trying my best to help you.</template>
+    </category>
+
+    <!-- Capabilities Query -->
+    <category>
+        <pattern>WHAT CAN YOU *</pattern>
+        <template>Ask me about anything, and I'll try my best to assist you.</template>
+    </category>
+
+    <!-- OK Responses -->
+    <category>
+        <pattern>OK</pattern>
+        <template>Sure.</template>
+    </category>
+
+    <category>
+        <pattern>OK *</pattern>
+        <template><srai>OK</srai></template>
+    </category>
+
+    <!-- Wikipedia and Wiktionary Links -->
+    <category>
+        <pattern>WHAT IS *</pattern>
+        <template>
+            This is what I found on Wikipedia:
+            <button>
+                <text>Click Here</text>
+                <url>https://en.wikipedia.org/wiki/<star/></url>
+            </button>
+        </template>
+    </category>
+
+    <category>
+        <pattern>WHO IS *</pattern>
+        <template><srai>WHAT IS <star/></srai></template>
+    </category>
+
+    <category>
+        <pattern>DEFINE *</pattern>
+        <template>
+            Here's the definition of <star/>:
+            <button>
+                <text>Click Here</text>
+                <url>https://en.wiktionary.org/wiki/<star/></url>
+            </button>
+        </template>
+    </category>
+
+    <!-- Maps -->
+    <category>
+        <pattern>WHERE IS *</pattern>
+        <template><srai>SHOW ME MAP OF <star/></srai></template>
+    </category>
+
+    <category>
+        <pattern>SHOW ME MAP OF *</pattern>
+        <template>
+            <think><set name="it"><star/></set></think>
+            Here's the map:
+            <button>
+                <text>Search for <star/> in Maps</text>
+                <url>https://www.google.com/maps/place/<star/></url>
+            </button>
+        </template>
+    </category>
+
+    <category>
+        <pattern>SHOW ME A MAP OF IT</pattern>
+        <template>
+            <condition name="it">
+                <li value="*"><srai>SHOW ME A MAP OF <get name="it"/></srai></li>
+                <li>A map of where?</li>
+            </condition>
+        </template>
+    </category>
+
+    <!-- Weather Information -->
+    <category>
+        <pattern>WEATHER IN *</pattern>
+        <template>
+            Here's the weather in <star/>:
+            <think><set name="it"><formal><star/></formal></set></think>
+            <button>
+                <text>Weather in <formal><star/></formal></text>
+                <url>https://www.accuweather.com/en/search-locations?query=<star/></url>
+            </button>
+        </template>
+    </category>
+
+    <category>
+        <pattern>HOW IS THE WEATHER LIKE THERE</pattern>
+        <template>
+            <condition name="it">
+                <li value="*"><srai>WEATHER IN <get name="it"/></srai></li>
+                <li>The weather where?</li>
+            </condition>
+        </template>
+    </category>
+
+    <!-- News -->
+    <category>
+        <pattern>SHOW ME NEWS ABOUT *</pattern>
+        <template>
+            <think><set name="topic"><star/></set></think>
+            Here are the latest news about <star/>:
+            <button>
+                <text>View News</text>
+                <url>https://news.google.com/search?q=<star/></url>
+            </button>
+        </template>
+    </category>
+
+    <category>
+        <pattern>LATEST NEWS</pattern>
+        <template>
+            Here are the top headlines:
+            <button>
+                <text>View Headlines</text>
+                <url>https://news.google.com</url>
+            </button>
+        </template>
+    </category>
+
+    <!-- General Internet Search -->
+    <category>
+        <pattern>TELL ME ABOUT *</pattern>
+        <template>
+            This is what I found on the Internet:
+            <button>
+                <text>Show search results</text>
+                <url>https://www.google.com/search?q=<star/></url>
+            </button>
+        </template>
+    </category>
+
+    <category>
+        <pattern>SEARCH FOR *</pattern>
+        <template><srai>TELL ME ABOUT <star/></srai></template>
+    </category>
+
+    <!-- YouTube and Spotify Links -->
+    <category>
+        <pattern>PLAY *</pattern>
+        <template>
+            Here are some results from YouTube and Spotify:
+            <button>
+                <text>Watch on YouTube</text>
+                <url>https://www.youtube.com/results?search_query=<star/></url>
+            </button>
+            <button>
+                <text>Listen on Spotify</text>
+                <url>https://open.spotify.com/search/<star/></url>
+            </button>
+        </template>
+    </category>
+
+    <!-- Fallback to general search if pattern is unknown -->
+    <category>
+        <pattern>*</pattern>
+        <template>
+            <srai>TELL ME ABOUT <star/></srai>
+        </template>
+    </category>
+
+</aiml>

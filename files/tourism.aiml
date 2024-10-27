@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<aiml version="2.0"> 
+  <category> 
+    <pattern>TELL ME ABOUT *</pattern> 
+    <template> 
+      <think><set name="it"><star/></set></think> 
+      Here is some information about <formal><star/></formal>. 
+      <button> 
+        <text>Click here</text> 
+        <url>https://en.wikipedia.org/wiki/<star/></url> 
+      </button> 
+    </template>
+  </category>
+
+  <category> 
+    <pattern>SHOW ME A MAP OF *</pattern> 
+    <template> 
+      <think><set name="it"><star/></set></think> 
+      Here is a map of <formal><star/></formal>. 
+      <button> 
+        <text>Click here</text> 
+        <url>https://www.google.co.uk/maps?q=<star/></url> 
+      </button> 
+    </template>
+  </category>
+
+  <category> 
+    <pattern>WHAT IS THE WEATHER IN *</pattern> 
+    <template> 
+      <think><set name="it"><star/></set></think> 
+      I hope it's a nice day in <formal><star/></formal>. 
+      <button> 
+        <text>Click here for the forecast</text> 
+        <url>https://www.weather-forecast.com/locations/<star/>/forecasts/latest</url>
+      </button> 
+    </template> 
+  </category>
+
+  <category> 
+    <pattern>TELL ME ABOUT IT</pattern> 
+    <template> 
+      <condition name="it"> 
+        <li value="*"><srai>TELL ME ABOUT <get name="it"/></srai></li> 
+      </condition>
+    </template> 
+  </category>
+
+  <category> 
+    <pattern>SHOW ME A MAP OF IT</pattern> 
+    <template> 
+      <condition name="it"> 
+        <li value="*"><srai>SHOW ME A MAP OF <get name="it"/></srai></li> 
+      </condition>
+    </template> 
+  </category>
+
+  <category> 
+    <pattern>WHAT IS THE WEATHER LIKE THERE</pattern> 
+    <template> 
+      <condition name="it"> 
+        <li value="*"><srai>WHAT IS THE WEATHER IN <get name="it"/></srai></li> 
+      </condition>
+    </template> 
+  </category>
+
+  <category> 
+    <pattern>*</pattern> 
+    <that>TELL YOU ABOUT WHAT</that> 
+    <template> 
+      <srai>TELL ME ABOUT <star/></srai> 
+    </template> 
+  </category>
+
+  <category> 
+    <pattern>*</pattern> 
+    <that>A MAP OF WHERE</that> 
+    <template> 
+      <srai>SHOW ME A MAP OF <star/></srai> 
+    </template> 
+  </category>
+
+  <category> 
+    <pattern>*</pattern> 
+    <that>THE WEATHER WHERE</that> 
+    <template> 
+      <srai>WHAT IS THE WEATHER IN <star/></srai> 
+    </template> 
+  </category> 
+<category>
+    <pattern></pattern>
+    <template></template>
+</category>
+</aiml>
